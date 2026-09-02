@@ -11,9 +11,9 @@
 
     <h2>Handlekurv</h2>
     <ul>
-        <li>Antall produkter: <span id="quantity">0</span></li>
-        <li>Pris: <span id="price">0</span>Kroner</li>
-        <li>Sum: <span id="totalt">0</span>Kroner</li>
+        <li>Antall produkter: <span id="quantitySpan">0</span></li>
+        <li>Pris: <span id="priceSpan">0</span>Kroner</li>
+        <li>Sum: <span id="totalSpan">0</span>Kroner</li>
     </ul>
 
 
@@ -36,7 +36,13 @@
         document.getElementById("age").innerHTML = age
 
         //FORBREDER HANDLEKURV
-        
+        let quantity = 3
+        const price = 1000
+        let total = quantity * price
+
+        document.getElementById("quantitySpan").innerHTML = quantity
+        document.getElementById("priceSpan").innerHTML = price
+        document.getElementById("totalSpan").innerHTML = total 
     </script>
 </body>
 </html>
