@@ -47,6 +47,7 @@
         let booksHTML = ""
         bokregister.map(b => { booksHTML += `<article><h3>${b.title}</h3></article>`})
         console.log(booksHTML)
+        document.getElementById("books").innerHTML = booksHTML
     </script>
     
 </body>
