@@ -17,7 +17,12 @@
     </ul>
 
     <script>
-        const books = ["Fourth Wing", "Silver Eyes", "Harry Potter og de vises stein"]
+        const books = [
+            "Fourth Wing", 
+            "Silver Eyes", 
+            "Harry Potter og de vises stein", 
+            "Harry Potter og mysteriekammeret"
+        ]
         books.sort()
 
         //Vi bruker map, som lagrer hver tittel i book og legger denne til listen med id books:
@@ -25,7 +30,8 @@
 
         //Vi bruker map for å bygge en HTML-streng i koden vår, som vi senere skriver ut:
         let booksHTML = ""
-        books.map(book => {})
+        books.map(book => {booksHTML += "<li>" + book + "</li>" })
+        document.getElementById("booksHTML").innerHTML = booksHTML
     </script>
 </body>
 </html>
