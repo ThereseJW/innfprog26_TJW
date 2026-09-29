@@ -9,7 +9,29 @@
     
 
     <script>
-        const people = ["Marius", "Tore", "Susanne", "Monica", "Arne", "Zoltan", "Beate"]
+        const people = [
+            "Marius", 
+            "Tore", 
+            "Susanne", 
+            "Monica", 
+            "Arne", 
+            "Zoltan", 
+            "Beate"
+        ]
+        function sortArray(array) {
+            //Sortere arrayen alfabetisk
+            array.sort()
+            //Lage en ny p-tag
+            const ptag = document.createElement("p")
+            //Fylle ptag med array, kommaseparert
+            ptag.innerHTML = array.join (", ")
+            //Skrive ut p-tag til nettside
+            document.body.appendChild(ptag)
+            //Testutskrift
+            console.log(array)
+        }
+
+        sortArray(people)
     </script>
 </body>
 </html>
