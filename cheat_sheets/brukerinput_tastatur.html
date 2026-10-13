@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat sheet brukerinput for tastatur</title>
+</head>
+<body>
+    <p>Retning: <span id="direction"></span></p>
+    <ul id="tastetrykk">
+
+    </ul>
+    <ul id="tasteslipp">
+
+    </ul>
+
+    <script>
+        //Et event som sjekker etter når vi trykked NED en tast
+        document.addEventListener("keydown", function (event) {
+            document.getElementById("tastetrykk").innerHTML += `<li>Tasten ${event.key} med koden ${event.code} er trykket ned</li>`
+        })
+
+        //Et event som sjekker når vi slipper OPP en tast
+        document.addEventListener("keyup", function (event) {
+            document.getElementById("tasteslipp").innerHTML += `<li>Tasten ${event.key} med kode ${event.code} er sluppet opp</li>`
+        })
+
+        //Sjekke om piltaster er trykket ned, og bestemme retning:
+        document.addEventListener("keydown", function (event) {
+            if(event.key === "a") {
+                direction = "left"
+                document.getElementById("direction").innerHTML = direction
+            }
+        })
+    </script>
+</body>
+</html>
