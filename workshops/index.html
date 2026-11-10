@@ -19,6 +19,8 @@
             width: 31%;
             height: 150px;
             position: relative;
+            cursor: pointer;
+            cursor: hand;
         }
 
         #colors > div > span {
@@ -59,16 +61,32 @@
         hexCodes.push(hexGenerator())
     }
 
+    //Lage funksjon for å bytte farge på en bestemt index i hexCodes:
+    function changeHex(index) {
+        hexCodes.splice(index, 1, hexGenerator())
+        printColor()
+    }    
+
+    
     //Skrive ut HTML-elementer for hver farge i hexCodes:
-    hexCodes.map((h, i) => {
-        document.getElementById("colors").innerHTML += `
-        <div style="background-color: ${h}">
-            <span>${h}</span>
-        </div>
-        `
-    })
-    //Test array
-    console.log(hexCodes)
+    function printColor() {
+        //Gjøre klar variable for å bygge HTML-streng
+        let colorHTML = ""
+        //Bruke .map for å bygge HTML-boks for hver farge i hexCodes-arrayen
+        hexCodes.map((h, i) => {
+             colorHTML += `
+                <div onClick="changeHex(${i})" style="background-color: ${h}">
+                    <span>${h}</span>
+                </div>
+            `
+        })  
+        //Skrive ut ferdig HTML-streng til #colors
+        document.getElementById("colors").innerHTML = colorHTML
+    }
+
+    //Første kjøring av printColors når siden lastes inn:
+    printColor()
+
     </script>
 </body>
 </html>
