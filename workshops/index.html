@@ -37,7 +37,7 @@
     <section id="colors">
 
     </section>
-
+    <button id="changeAll">Bytte ut tre tilfeldig farger</button>
     <script>
     //Tillate tegn i en hex-kode: 
     const chars = "ABCDEF0123456789"
@@ -65,9 +65,47 @@
     function changeHex(index) {
         hexCodes.splice(index, 1, hexGenerator())
         printColor()
-    }    
-
+    }  
     
+    function recursiveIndexSelector(arrayToCheck) {
+        //1 Check: arrayToCheck has 3 elements
+        if(arrayToCheck.length === 3) {
+            return
+        } else {
+            const indexToCheck = selectRandomIndex (hexCodes)
+            //Dose indexToCheck exist in the array already?
+            if(arrayToCheck.includes(indexToCheck)) {
+                recursiveIndexSelector(arrayToCheck)
+            } else {
+                arrayToCheck.push(indexToCheck)
+                recursiveIndexSelector(arrayToCheck)
+            }
+        }
+    }
+
+    //Lage en funksjon for å velge en tilfeldig index:
+    function selectRandomIndex(array) {
+        const randomIndex = Math.floor(Math.random() * array.length)
+        return randomIndex
+    }
+
+
+    document.getElementById("changeAll").addEventListener("click", function() {
+        //Velg tre tilfeldige indexer mellom 0 og 5
+        const randomIndexes = []
+        
+        recursiveIndexSelector(randomIndexes)
+
+        console.log(randomIndexes)
+
+        randomIndexes.map(i => hexCodes[i] = hexGenerator())
+
+        printColor()
+
+        //Kjøre en .splice mot hexCodes for hver av de tre indexene
+    })
+
+
     //Skrive ut HTML-elementer for hver farge i hexCodes:
     function printColor() {
         //Gjøre klar variable for å bygge HTML-streng
